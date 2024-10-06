@@ -8,7 +8,7 @@ const Search = ({onSearchChange}) => {
 
     const loadOptions = async (inputValue) => {
         try {
-            const response = await fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions);
+            const response = await fetch(`${GEO_API_URL}/cities?minPopulation=100000&namePrefix=${inputValue}`, geoApiOptions);
             const result = await response.json();
             return{
                 options: result.data.map((city) => {
@@ -18,11 +18,12 @@ const Search = ({onSearchChange}) => {
                     };
                 }),
             };
-        } catch (error) {
+        } 
+        catch (error) {
             console.error(error);
         }
 
-        // return fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, options)
+        // return fetch(`${GEO_API_URL}/cities?minPopulation=1000000&namePrefix=${inputValue}`, geoApiOptions)
         // .then((response) => response.json())
         // .then((reponse) => {
         //     return{
